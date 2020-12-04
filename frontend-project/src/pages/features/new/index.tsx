@@ -6,21 +6,22 @@ import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
 
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
-interface TagNewFormProps {
-  name: String;
+interface FeatureNewFormProps {
+  name: string;
+  featureOptions: string[];
   dispatch: Function;
 }
 
-// const layout = {
-//   labelCol: { span: 8 },
-//   wrapperCol: { span: 16 },
-// };
+const layout = {
+  labelCol: { span: 8 },
+  wrapperCol: { span: 16 },
+};
 
 const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
 
-const FeatureNewForm: FC<TagNewFormProps> = () => {
+const FeatureNewForm: FC<FeatureNewFormProps> = () => {
   const [form] = Form.useForm();
 
   const onSubmit = () => {
@@ -35,7 +36,7 @@ const FeatureNewForm: FC<TagNewFormProps> = () => {
   // console.log(form)
 
   return (
-    <Form form={form} onFinish={onFinish}>
+    <Form form={form} onFinish={onFinish} {...layout}>
       <PageHeaderWrapper content={formatMessage({ id: 'feature-new.page-header-content' })}>
         <Card bordered={false}>
           <Row>
@@ -65,8 +66,8 @@ const FeatureNewForm: FC<TagNewFormProps> = () => {
                         <Form.Item
                           {...field}
                           label="Opcja cechy"
-                          name={[field.name, 'fieldOption']}
-                          // fieldKey={[field.fieldKey, 'fieldOption']}
+                          name={[field.name, 'featureOption']}
+                          // fieldKey={[field.fieldKey, 'featureOption']}
                           rules={[{ required: true, message: 'Opcja cechy jest wymagana' }]}
                         >
                           <Input placeholder="Opcja cechy" />
