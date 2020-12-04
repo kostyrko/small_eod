@@ -12,6 +12,7 @@ export default {
   'menu.letters': 'Listy',
   'menu.letters.list': 'Lista',
   'menu.features': 'Cechy',
+  'menu.features.new': 'Nowa',
   'menu.features.list': 'Lista',
   'menu.channels': 'Kanały',
   'menu.channels.new': 'Nowy',

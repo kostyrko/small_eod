@@ -120,7 +120,7 @@ export default {
                 {
                   name: 'list',
                   icon: 'HomeOutlined',
-                  path: '/tags/list',
+                  path: '/tags',
                   component: './tags/list',
                 },
               ],
@@ -181,6 +181,12 @@ export default {
               icon: 'FileTextOutlined',
               path: '/features',
               routes: [
+                {
+                  name: 'new',
+                  icon: 'FileAddOutlined',
+                  path: '/features/new',
+                  component: './features/new',
+                },
                 {
                   name: 'list',
                   icon: 'FileTextOutlined',

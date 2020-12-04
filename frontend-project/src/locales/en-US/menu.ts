@@ -19,6 +19,7 @@ export default {
   'menu.institutions.new': 'New',
   'menu.institutions.list': 'List',
   'menu.features': 'Features',
+  'menu.features.new': 'New',
   'menu.features.list': 'List',
   'menu.letters': 'Letters',
   'menu.letters.list': 'List',
