@@ -1,5 +1,5 @@
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
-import { Button, Col, Card, Form, Input, Row, Space } from 'antd';
+import { Button, Col, Card, Form, Input, Row } from 'antd';
 import { connect } from 'dva';
 import React, { useEffect, FC } from 'react';
 import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
@@ -58,28 +58,62 @@ const FeatureNewForm: FC<FeatureNewFormProps> = () => {
 
           <Row>
             <Col span={16}>
-              <Form.List name="featureOptions">
+              <Form.List
+                name="featureOption"
+                // rules={[
+                //   {
+                //     validator: async (_, featureOption) => {
+                //       if (!featureOption) {
+                //         return Promise.reject(new Error('Proszę wpisać przynajmniej jedną opcję cechy'));
+                //       }
+                //     },
+                //   },
+                // ]}
+              >
                 {(fields, { add, remove }) => (
                   <>
                     {fields.map(field => (
-                      <Space key={field.key} style={{ marginBottom: 8 }} align="baseline">
+                      <Form.Item
+                        label={formatMessage({ id: 'feature-new.form.name.label' })}
+                        required={false}
+                        key={field.key}
+                      >
                         <Form.Item
                           {...field}
-                          label="Opcja cechy"
-                          name={[field.name, 'featureOption']}
-                          // fieldKey={[field.fieldKey, 'featureOption']}
-                          rules={[{ required: true, message: 'Opcja cechy jest wymagana' }]}
+                          validateTrigger={['onChange', 'onBlur']}
+                          rules={[
+                            {
+                              required: true,
+                              whitespace: true,
+                              message: 'Proszę uzupełnić opcję cechy.',
+                            },
+                          ]}
+                          noStyle
                         >
-                          <Input placeholder="Opcja cechy" />
+                          <Input placeholder="Opcja cechy" style={{ width: '100%' }} />
                         </Form.Item>
-                        <MinusCircleOutlined onClick={() => remove(field.name)} />
-                      </Space>
+                        {fields.length > 1 ? (
+                          <MinusCircleOutlined
+                            className="dynamic-delete-button"
+                            onClick={() => remove(field.name)}
+                          />
+                        ) : null}
+                      </Form.Item>
                     ))}
-
-                    <Form.Item label="Opcja cechy">
-                      <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
-                        Dodaj opcję cechy
+                    <Form.Item
+                      // label={formatMessage({ id: 'feature-new.form.name.label' })}
+                      {...tailLayout}
+                    >
+                      <Button
+                        type="dashed"
+                        onClick={() => add()}
+                        style={{ width: '100%' }}
+                        icon={<PlusOutlined />}
+                      >
+                        Dodaj cechę
                       </Button>
+
+                      {/* <Form.ErrorList errors={errors} /> */}
                     </Form.Item>
                   </>
                 )}
