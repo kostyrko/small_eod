@@ -222,6 +222,12 @@ export default {
               path: '/features',
               routes: [
                 {
+                  name: 'new',
+                  icon: 'FileAddOutlined',
+                  path: '/features/new',
+                  component: './features/new',
+                },
+                {
                   name: 'list',
                   icon: 'FileTextOutlined',
                   path: '/features/list',
