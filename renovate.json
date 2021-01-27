@@ -7,6 +7,14 @@
     {
       "depTypeList": ["minor", "patch", "pin", "devDependencies"],
       "automerge": true
+    },
+    {
+      "packagePatterns": ["^@types/"],
+      "automerge": true
+    },
+    {
+      "extends": ["packages:linters"],
+      "automerge": true
     }
   ],
   "docker": {
